@@ -11,12 +11,12 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get("/:projectID", async (req, res) => {
-  if (!Number(req.params.projectID)) {
+router.get("/:actionID", async (req, res) => {
+  if (!Number(req.params.actionID)) {
     res.status(400).json({ errorMessage: "ID not a number" });
   }
   try {
-    const results = await actionsHelper.get(req.params.projectID);
+    const results = await actionsHelper.get(req.params.actionID);
     res.status(200).json(results);
   } catch (err) {
     res.status(500).json(err);
@@ -35,13 +35,13 @@ router.delete("/:actionID", async (req, res) => {
       res.status(500).json({ errorMessage: "Invalid ID for removal" });
     }
   } catch (err) {
-    console.log(err);
+    
     res.status(500).json(err);
   }
 });
 
 router.put("/", async (req, res) => {
-  console.log(req.body);
+  
   if (
     !req.body.project_id ||
     !req.body.description ||
@@ -53,13 +53,13 @@ router.put("/", async (req, res) => {
     const results = await actionsHelper.insert(req.body);
     res.status(200).json({ results });
   } catch (err) {
-    console.log(err);
+    
     res.status(500).json(err);
   }
 });
 
 router.put("/:actionID", async (req, res) => {
-  console.log(req.body);
+  
   if (
     !req.body.project_id ||
     !req.body.description ||
@@ -76,7 +76,7 @@ router.put("/:actionID", async (req, res) => {
     const results = await actionsHelper.update(req.params.actionID,req.body);
     res.status(200).json({ results });
   } catch (err) {
-    console.log(err);
+    
     res.status(500).json(err);
   }
 });
