@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
 router.get("/:projectID", async (req, res) => {
   if (!Number(req.params.projectID)) {
     res.status(400).json({ errorMessage: "ID not a number" });
+    return;
   }
   try {
     const results = await projectsHelper.get(req.params.projectID);

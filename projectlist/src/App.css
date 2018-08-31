@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+.taskRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+.taskColumn{
+  width: 33%;
+}
