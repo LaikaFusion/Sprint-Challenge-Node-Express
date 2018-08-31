@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import Tasklist from "./components/tasklist";
-import { Route } from 'react-router-dom'
+import { Route,Switch } from 'react-router-dom'
+import IndividualTask from "./components/IndividualTask";
 
 
 class App extends Component {
@@ -32,8 +33,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Switch>
+      <Route path="/:taskID" render={props=>  
+           <IndividualTask {...props} list={this.state.taskList}/>}/>
            <Route exact path="/" render={props=>  
            <Tasklist {...props} list={this.state.taskList}/>}/>
+           </Switch>
       </div>
     );
   }

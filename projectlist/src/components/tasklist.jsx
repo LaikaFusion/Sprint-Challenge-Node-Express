@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Tasklist extends Component {
   taskListDisplay = () => {
     return this.props.list.map((e, i) => {
       return (
-        <div className="taskRow" key={i}>
+        <Link to={"/"+e.id} className="taskRow" key={i}>
           <div className="taskColumn">{e.name}</div>
           <div className="taskColumn">{e.description}</div>
           <div className="taskColumn">{e.complete ? "Done":""}</div>
 
-        </div>
+        </Link>
       );
     });
   }
